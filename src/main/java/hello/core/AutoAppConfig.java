@@ -1,11 +1,15 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 @Configuration
 @ComponentScan( //@Component가 붙은 클래스를 스캔해서 스프링 빈으로 등록한다.
+        //basePackages = "hello.core.member", //member package만 스캔대상으로 설정한다.
         /*
             excludeFilters : ComponentScan 대상에서 제외할 클래스 설정.
             참고:
@@ -18,4 +22,9 @@ import org.springframework.context.annotation.FilterType;
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
 public class AutoAppConfig {
+
+    @Bean(name = "memoryMemberRepository")
+    MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
 }
