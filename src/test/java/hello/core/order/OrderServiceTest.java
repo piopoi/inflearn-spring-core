@@ -8,9 +8,13 @@ import hello.core.member.Member;
 import hello.core.member.MemberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+//@SpringBootTest
 public class OrderServiceTest {
 
+    //@Autowired
     MemberService memberService;
     OrderService orderService;
 
@@ -34,4 +38,10 @@ public class OrderServiceTest {
         //then
         assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
+
+//    @Test
+//    void fieldInjectionTest() {
+//        OrderService orderService = new OrderServiceImpl();
+//        orderService.createOrder(1L, "itemA", 10000);
+//    }
 }
